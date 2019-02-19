@@ -1,5 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default ()=>{
-    return <span>hello from home page</span>
+export default () => {
+    let customInterval
+    const [count, setCount] = useState(0)
+    useEffect(() => {
+        customInterval = setInterval(setCount(count + 1), 5000)
+        return () => {
+            clearInterval(customInterval)
+        }
+
+    })
+    return (
+        <span>
+            <p>button clicked {count}times</p>
+        </span>
+    )
 }
